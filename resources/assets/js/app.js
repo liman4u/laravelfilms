@@ -17,7 +17,7 @@ Vue.use(VueAxios, axios);
 import App from './App.vue';
 import CreateFilm from './components/CreateFilm.vue';
 import AllFilms from './components/AllFilms.vue';
-import EditFilm from './components/EditFilm.vue';
+import ViewFilm from './components/ViewFilm.vue';
 
 const routes = [
     {
@@ -31,9 +31,9 @@ const routes = [
         component: AllFilms
     },
     {
-        name: 'EditFilm',
-        path: '/edit/:id',
-        component: EditFilm
+        name: 'ViewFilm',
+        path: '/films/:id',
+        component: ViewFilm
     }
 ];
 

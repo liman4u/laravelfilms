@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laravel Vue CRUD Application</title>
     <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css">
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"  rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="app">

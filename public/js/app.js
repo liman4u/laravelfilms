@@ -985,8 +985,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_CreateFilm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_CreateFilm_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_AllFilms_vue__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_AllFilms_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_AllFilms_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_EditFilm_vue__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_EditFilm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_EditFilm_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_ViewFilm_vue__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_ViewFilm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_ViewFilm_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -1017,9 +1017,9 @@ var routes = [{
     path: '/',
     component: __WEBPACK_IMPORTED_MODULE_6__components_AllFilms_vue___default.a
 }, {
-    name: 'EditFilm',
-    path: '/edit/:id',
-    component: __WEBPACK_IMPORTED_MODULE_7__components_EditFilm_vue___default.a
+    name: 'ViewFilm',
+    path: '/films/:id',
+    component: __WEBPACK_IMPORTED_MODULE_7__components_ViewFilm_vue___default.a
 }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({ mode: 'history', routes: routes });
@@ -16614,6 +16614,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
@@ -16693,28 +16694,13 @@ var render = function() {
                   "router-link",
                   {
                     staticClass: "btn btn-primary",
-                    attrs: { to: { name: "EditFilm", params: { id: film.id } } }
+                    attrs: { to: { name: "ViewFilm", params: { id: film.id } } }
                   },
-                  [_vm._v("Edit")]
+                  [_vm._v("View")]
                 )
               ],
               1
-            ),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-danger",
-                  on: {
-                    click: function($event) {
-                      _vm.deleteFilm(film.id)
-                    }
-                  }
-                },
-                [_vm._v("Delete")]
-              )
-            ])
+            )
           ])
         })
       )
@@ -16730,7 +16716,7 @@ var staticRenderFns = [
       _c("tr", [
         _c("td", [_vm._v("ID")]),
         _vm._v(" "),
-        _c("td", [_vm._v(" Name")]),
+        _c("td", [_vm._v("Name")]),
         _vm._v(" "),
         _c("td", [_vm._v("Ticket Price")]),
         _vm._v(" "),
@@ -16749,15 +16735,18 @@ if (false) {
 }
 
 /***/ }),
-/* 62 */
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(41)
 /* script */
-var __vue_script__ = __webpack_require__(63)
+var __vue_script__ = __webpack_require__(66)
 /* template */
-var __vue_template__ = __webpack_require__(64)
+var __vue_template__ = __webpack_require__(67)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -16774,7 +16763,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/EditFilm.vue"
+Component.options.__file = "resources/assets/js/components/ViewFilm.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -16784,9 +16773,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-558634e5", Component.options)
+    hotAPI.createRecord("data-v-a71d9300", Component.options)
   } else {
-    hotAPI.reload("data-v-558634e5", Component.options)
+    hotAPI.reload("data-v-a71d9300", Component.options)
 ' + '  }
   module.hot.dispose(function (data) {
     disposed = true
@@ -16797,11 +16786,61 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 63 */
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -16839,24 +16878,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getFilm: function getFilm() {
             var _this = this;
 
-            var uri = 'http://localhost:8000/films/' + this.$route.params.id + '/edit';
+            var uri = "http://localhost:8000/films/" + this.$route.params.id + "/edit";
             this.axios.get(uri).then(function (response) {
                 _this.film = response.data;
-            });
-        },
-        updateFilm: function updateFilm() {
-            var _this2 = this;
-
-            var uri = 'http://localhost:8000/films/' + this.$route.params.id;
-            this.axios.patch(uri, this.item).then(function (response) {
-                _this2.$router.push({ name: 'AllFilms' });
             });
         }
     }
 });
 
 /***/ }),
-/* 64 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -16864,7 +16895,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("Update Film")]),
+    _c("h1", [_vm._v("View Film")]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-10" }),
@@ -16886,92 +16917,252 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c(
-      "form",
-      {
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            _vm.updateItem($event)
+    _c("form", [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.film.name,
+              expression: "film.name"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", disabled: "" },
+          domProps: { value: _vm.film.name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.film, "name", $event.target.value)
+            }
           }
-        }
-      },
-      [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v("Name")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.film.name,
-                expression: "film.name"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.film.name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Description:")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.film.description,
+                  expression: "film.description"
                 }
-                _vm.$set(_vm.film, "name", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { name: "product_price" } }, [
-            _vm._v("Item Price")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.film.ticket_price,
-                expression: "film.ticket_price"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.film.ticket_price },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", disabled: "" },
+              domProps: { value: _vm.film.description },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.film, "description", $event.target.value)
                 }
-                _vm.$set(_vm.film, "ticket_price", $event.target.value)
               }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(0, false, false)
-      ]
-    )
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Release Date:")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.film.release_date,
+                  expression: "film.release_date"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", disabled: "" },
+              domProps: { value: _vm.film.release_date },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.film, "release_date", $event.target.value)
+                }
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Rating:")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.film.rating,
+                  expression: "film.rating"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", disabled: "" },
+              domProps: { value: _vm.film.rating },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.film, "rating", $event.target.value)
+                }
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Photo:")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.film.photo,
+                  expression: "film.photo"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", disabled: "" },
+              domProps: { value: _vm.film.photo },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.film, "photo", $event.target.value)
+                }
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Genre:")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.film.genre,
+                  expression: "film.genre"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", disabled: "" },
+              domProps: { value: _vm.film.genre },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.film, "genre", $event.target.value)
+                }
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Country:")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.film.country,
+                  expression: "film.country"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", disabled: "" },
+              domProps: { value: _vm.film.country },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.film, "country", $event.target.value)
+                }
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Ticket Price:")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.film.ticket_price,
+                  expression: "film.ticket_price"
+                }
+              ],
+              staticClass: "form-control col-md-6",
+              attrs: { type: "text", disabled: "" },
+              domProps: { value: _vm.film.ticket_price },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.film, "ticket_price", $event.target.value)
+                }
+              }
+            })
+          ])
+        ])
+      ])
+    ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Update")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-558634e5", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-a71d9300", module.exports)
   }
 }
 
