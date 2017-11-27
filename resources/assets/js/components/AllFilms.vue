@@ -42,7 +42,7 @@
         methods: {
             fetchFilms()
             {
-                let uri = 'http://localhost:8000/films';
+                let uri = 'http://127.0.0.1:8000/films';
                 this.axios.get(uri).then((response) => {
                     this.films = response.data;
                 });

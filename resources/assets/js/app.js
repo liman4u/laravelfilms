@@ -15,13 +15,25 @@ import axios from 'axios';
 Vue.use(VueAxios, axios);
 
 import App from './App.vue';
-import Example from './components/Example.vue';
+import CreateFilm from './components/CreateFilm.vue';
+import AllFilms from './components/AllFilms.vue';
+import EditFilm from './components/EditFilm.vue';
 
 const routes = [
     {
-        name: 'Example',
+        name: 'CreateFilm',
+        path: '/films/create',
+        component: CreateFilm
+    },
+    {
+        name: 'AllFilms',
         path: '/',
-        component: Example
+        component: AllFilms
+    },
+    {
+        name: 'EditFilm',
+        path: '/edit/:id',
+        component: EditFilm
     }
 ];
 

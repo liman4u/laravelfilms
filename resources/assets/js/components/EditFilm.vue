@@ -1,18 +1,18 @@
 <template>
     <div>
-        <h1>Update Item</h1>
+        <h1>Update Film</h1>
         <div class="row">
             <div class="col-md-10"></div>
-            <div class="col-md-2"><router-link :to="{ name: 'DisplayItem' }" class="btn btn-success">Return to Items</router-link></div>
+            <div class="col-md-2"><router-link :to="{ name: 'AllFilms' }" class="btn btn-success">Return to Films</router-link></div>
         </div>
         <form v-on:submit.prevent="updateItem">
             <div class="form-group">
-                <label>Item Name</label>
-                <input type="text" class="form-control" v-model="item.name">
+                <label>Name</label>
+                <input type="text" class="form-control" v-model="film.name">
             </div>
             <div class="form-group">
                 <label name="product_price">Item Price</label>
-                <input type="text" class="form-control" v-model="item.price">
+                <input type="text" class="form-control" v-model="film.ticket_price">
             </div>
             <div class="form-group">
                 <button class="btn btn-primary">Update</button>
@@ -24,25 +24,25 @@
     export default{
         data(){
             return{
-                item:{}
+                film:{}
             }
         },
         created: function(){
-            this.getItem();
+            this.getFilm();
         },
         methods: {
-            getItem()
+            getFilm()
             {
-                let uri = `http://localhost:8000/items/${this.$route.params.id}/edit`;
+                let uri = `http://localhost:8000/films/${this.$route.params.id}/edit`;
                 this.axios.get(uri).then((response) => {
-                    this.item = response.data;
+                    this.film = response.data;
                 });
             },
-            updateItem()
+            updateFilm()
             {
-                let uri = 'http://localhost:8000/items/'+this.$route.params.id;
+                let uri = 'http://localhost:8000/films/'+this.$route.params.id;
                 this.axios.patch(uri, this.item).then((response) => {
-                    this.$router.push({name: 'DisplayItem'});
+                    this.$router.push({name: 'AllFilms'});
                 });
             }
         }

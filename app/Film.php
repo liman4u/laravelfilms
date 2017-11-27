@@ -12,4 +12,16 @@ class Film extends Model
         'genre' ,
         'country',
         'photo' ];
+
+    protected $hidden = ['created_at','updated_at'];
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
+
+    public function getCommentsAttribute()
+    {
+        return array_flatten($this->comments()->get(['comment'])->toArray());
+    }
 }

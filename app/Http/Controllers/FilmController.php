@@ -14,7 +14,9 @@ class FilmController extends Controller
      */
     public function index()
     {
-        //
+        $films = Film::all();
+
+        return response()->json($films);
     }
 
     /**
@@ -24,8 +26,8 @@ class FilmController extends Controller
      */
     public function create()
     {
-        $films = Film::all();
-        return response()->json($films);
+
+       //
     }
 
     /**
